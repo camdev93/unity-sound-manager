@@ -3,7 +3,7 @@ using System.IO;
 using UnityEngine;
 
 [System.Serializable]
-public class SoundData
+public class Sound
 {
     public string id;
     public string path;
@@ -12,7 +12,7 @@ public class SoundData
 [System.Serializable]
 public class ISoundData
 {
-    public List<SoundData> sounds = new List<SoundData>();
+    public List<Sound> sounds = new List<Sound>();
 }
 
 public class Game : MonoBehaviour
@@ -24,8 +24,8 @@ public class Game : MonoBehaviour
         string jsonContent = File.ReadAllText(jsonPath);
         ISoundData soundData = JsonUtility.FromJson<ISoundData>(jsonContent);
         
-        soundData.sounds.Add(new SoundData { id = "Footstep", path = "Assets/Audio/Footstep.wav" });
-        soundData.sounds.Add(new SoundData { id = "Click", path = "Assets/Audio/Click.wav" });
+        soundData.sounds.Add(new Sound { id = "Footstep", path = "Assets/Audio/Footstep.wav" });
+        soundData.sounds.Add(new Sound { id = "Click", path = "Assets/Audio/Click.wav" });
         
         string updatedJson = JsonUtility.ToJson(soundData, true);
         File.WriteAllText(jsonPath, updatedJson);
