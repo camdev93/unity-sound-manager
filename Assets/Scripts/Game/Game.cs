@@ -24,6 +24,7 @@ public class Game : MonoBehaviour
         string jsonContent = File.ReadAllText(jsonPath);
         ISoundData soundData = JsonUtility.FromJson<ISoundData>(jsonContent);
         
+        // this would also incorperate object pooling.
         soundData.sounds.Add(new Sound { id = "Footstep", path = "Assets/Audio/Footstep.wav" });
         soundData.sounds.Add(new Sound { id = "Click", path = "Assets/Audio/Click.wav" });
         
